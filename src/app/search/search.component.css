@@ -1,0 +1,93 @@
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box
+}
+html,
+body {
+  height: calc(100% + 1px)
+}
+
+.header-wrapper,
+.autocomplete-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.header-wrapper {
+  min-height: 60%;
+  flex-flow: column wrap;
+  position: relative;
+  margin-bottom: 30px;
+  z-index: 4;
+}
+
+.autocomplete-wrapper {
+  width: 100%;
+}
+.movie-title {
+  position: absolute;
+  top: 10px;
+  bottom: 0;
+  left: 75px;
+  margin: auto;
+}
+
+.wrapper {
+  background-color: #f3f3f3;
+  border-radius: 1rem;
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 2rem;
+  width: 100%;
+}
+
+.iframe-container {
+  overflow: hidden;
+  padding-top: 56.25%;
+  position: relative;
+}
+ 
+.iframe-container iframe {
+   border: 0;
+   height: 100%;
+   left: 0;
+   position: absolute;
+   top: 0;
+   width: 100%;
+}
+
+.movie-info {
+  position: absolute;
+}
+
+.next-btn {
+  position: absolute;
+  right: 0;
+}
+
+.mat-form-field {
+  width: 500px;
+  font-size: 20px;
+}
+
+.mat-option {
+  height: 80px;
+}
+
+.movie-poster {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.tags {
+  position: absolute;
+  top: 26px;
+  bottom: 0;
+  left: 75px;
+  margin: auto;
+  font-size: 13px;
+}
