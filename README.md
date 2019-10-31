@@ -1,5 +1,7 @@
 # Movies
 
+Angular application which lets you search for movies in Omdb and shows movie trailers for a selected movie.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.3.
 
 ## Development server

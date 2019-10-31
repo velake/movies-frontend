@@ -91,3 +91,53 @@ body {
   margin: auto;
   font-size: 13px;
 }
+
+@media only screen and (max-width: 768px) {
+  .wrapper {
+    background-color: #ffffff;
+    height: 40%;
+    width: 85%;
+  }
+
+  .header-wrapper {
+    min-height: 70%;
+  }
+
+  .header-wrapper,
+  .keyword {
+    width: 100%;
+  }
+  .keyword {
+    font-size: 1.3em
+  }
+  .filter-select {
+    font-size: 0.9em;
+    left: 10%;
+    top: calc(50% + 23px);
+  }
+  .keyword-button {
+    right: 11%
+  }
+
+  .movie-info {
+    bottom: -11px;
+    line-height: 3px;
+  }
+
+  .next-btn {
+    bottom: 0;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .filter-select,
+  .keyword {
+    width: 95%;
+  }
+  .filter-select {
+    left: 2.5%;
+  }
+  .keyword-button {
+    right: 3.5%
+  }
+}

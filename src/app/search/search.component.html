@@ -2,14 +2,13 @@
   <section class="header-wrapper">
     <div class="autocomplete-wrapper">
       <mat-form-field class="example-full-width">
-        <input [matAutocomplete]="auto" [formControl]="queryField" type="text" id="keyword" placeholder="search for movie..." autofocus matInput placeholder="Search a movie trailer...">
+        <input [matAutocomplete]="auto" [formControl]="queryField" type="text" class="keyword" placeholder="search for movie..." autofocus matInput placeholder="Search a movie trailer...">
       </mat-form-field>
     </div>
     <div *ngIf="showVideo" class="movie-info">
       <p> Imdb Rating: {{ movie.imdbRating }} </p>
       <p> Release year: {{ movie.year }} </p>
     </div>
-
     <mat-autocomplete #auto="matAutocomplete">
       <mat-option (click)="loadVideo(result)" *ngFor="let result of results" [value]="result.title">
         <img class="movie-poster" [src]="result.poster == 'N/A' ? 'assets/images/default-thumb.png' : result.poster" alt="" width="50" height="60">
@@ -18,22 +17,15 @@
       </mat-option>
     </mat-autocomplete>
 
-<!--     <ul class="filter-select">
-      <li *ngFor="let result of results" (click)="loadVideo(result)" class="filter-select-list">
-        <img [src]="result.poster == 'N/A' ? 'assets/images/default-thumb.png' : result.poster" alt="" width="50" height="50">
-        <p class="artist-name">{{result.title}}</p>
-        <span class="tags">{{result.year}}</span>
-      </li>
-    </ul> -->
     <button mat-flat-button color="accent" class="next-btn" *ngIf="this.trailerIndex < this.movie.trailerUrls.length" (click)="showNextTrailer()">
       Show next trailer 
       <mat-icon>navigate_next</mat-icon>
     </button>
   </section>
   <div *ngIf="showVideo">
-    <p *ngIf="showMessage"> Sorry there are no other trailers available. </p>
+    <p *ngIf="showMessage && movie.trailerUrls[trailerIndex]"> Sorry there are no other trailers available. </p>
     <div class="iframe-container">
-      <iframe [src]="movie.trailerUrls[trailerIndex]" allowfullscreen></iframe>
+      <iframe [src]="movie.trailerUrls[trailerIndex] ? movie.trailerUrls[trailerIndex] : null" allowfullscreen></iframe>
     </div>
   </div>
 </div>

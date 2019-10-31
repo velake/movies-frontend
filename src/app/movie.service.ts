@@ -5,16 +5,17 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
 import Movie from './movie';
+import { environment } from '../environments/environment';
 
 @Injectable()
 export class MovieService {
     clientID: string = 'PAST YOUR CLIENT ID';
-    baseUrl: string = 'https://localhost:44300/movies';
+    baseUrl: string = environment.baseUrl;
 
     constructor(private _http: HttpClient) { }
     	search(queryString: string) {
         if (queryString != "") {
-                let _URL = this.baseUrl + '?search=' + queryString;
+                let _URL = this.baseUrl + '/movies/search?title=' + queryString + '*';
           return this._http.get(_URL)
           .pipe(
               catchError(this.handleError)
@@ -23,7 +24,7 @@ export class MovieService {
     }
 
 	    getMovieTrailer(imdbId: string) {
-	        let _URL = this.baseUrl + '/trailer/?imdbId=' + imdbId;
+	        let _URL = this.baseUrl + '/movies/?imdbId=' + imdbId;
 	          return this._http.get(_URL)
 	          .pipe(
 	            catchError(this.handleError)

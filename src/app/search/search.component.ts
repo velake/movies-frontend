@@ -40,22 +40,24 @@ import Movie from '../movie';
 
     loadVideo(movie: Movie) {
       this.clearResults();
+      this.showMessage = false; // displays msg to the user that no other trailers are available
+
       this.showVideo = true;
       this._MovieService.getMovieTrailer(movie.imdbId)
-      .subscribe((movie: Movie) => {
-      	if (!movie) {
-      		this.showVideo = false;
-      	} else {    		
-	        this.movie = movie;
-	        this.trailerIndex = 0;
-	        if (this.movie.trailerUrls.length > 0) {
-	          this.movie.trailerUrls = movie.trailerUrls.map(url => this._sanitizer.bypassSecurityTrustResourceUrl(url));
-	          this.showVideo = true;
-	        } else {
-	          this.showMessage = true;
-	        }
-      	}
-      });
+        .subscribe((movie: Movie) => {
+        	if (!movie) {
+        		this.showVideo = false;
+        	} else {    		
+  	        this.movie = movie;
+  	        this.trailerIndex = 0;
+  	        if (this.movie.trailerUrls.length > 0) {
+              this.movie.trailerUrls = movie.trailerUrls.map(url => this._sanitizer.bypassSecurityTrustResourceUrl(url));
+              this.showVideo = true;
+  	        } else {
+  	          this.showMessage = true;
+  	        }
+        	}
+        });
     }
 
     showNextTrailer(): void {
